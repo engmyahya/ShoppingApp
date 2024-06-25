@@ -19,4 +19,8 @@ module.exports.products = [
     id: "5",
     name: "eraser",
   },
+  {
+    id: "6",
+    name: "ruler",
+  },
 ];
