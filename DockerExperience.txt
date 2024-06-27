@@ -1,0 +1,65 @@
+-> Docker is a containerization technology that allows you to package and run your applications in isolated containers.
+-> Docker is a platform that allows you to build, ship, and run distributed applications.
+
+-> we have:
+1-Docker Image : which we are used to pull as an OS, executable template instance i.e. node
+2-Docker Container : which is the running instance of the image i.e ubuntu or node Container
+3-Docker machine : which is hosting all of the images' containers and expose the access to those container.
+
+docker pull node
+docker image ls
+docker ps -a
+#itd : intermediate terminal demon
+docker run -itd  --name containerName  -p DockerMachineExposedPort:DockerContainerOFTheAppInternalPort node bash
+docker cp currentFldDir/  containerName:\appNameFolder
+docker attach containerName
+#s232d2323223:# ls
+#s232d2323223:# cd appNameFolder\
+#s232d2323223: appNameFolder# npm install
+#s232d2323223: appNameFolder# npm install nodemon
+#s232d2323223: appNameFolder# npm start
+
+
+
+In the docker file, we will have:  [https://medium.com/@anshita.bhasin/a-step-by-step-guide-to-create-dockerfile-9e3744d38d11]
+FROM        node
+WORKDIR     /shoppingapp
+COPY        . . 
+RUN         npm install
+            npm install nodemon
+EXPOSE
+            5005
+CMD ["npm","start"]
+
+
+Explained:
+FROM
+##the image that will be used for the docker engine to build
+FROM node
+WORKDIR
+## the directory of the project on the docker Container once built
+WORKDIR /app
+
+
+COPY
+## the files/folders which will be copied from the host to the Docker container
+COPY source destination
+COPY package.json /appDir/ # copy package.json from host to the image' container's appDir folder.
+COPY . . 	# copy all files from host(.) to the provided WORKDIR (.)
+
+RUN
+## to run set of instructions while image build
+RUN npm install
+
+CMD
+## to run set of instructions on the docker container
+CMD ["executable","param1","param2",...]
+CMD ["npm","start"]
+
+EXPOSE
+## expose the Docker container's port to be accessible through the docker machine.
+EXPOSE 8000
+
+ENV
+## used to set the environment variables
+ENV NODE_ENV production
