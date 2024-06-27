@@ -5,7 +5,7 @@ const adminRoute = require("../src/routes/admin");
 const shopRoute = require("../src/routes/shop");
 //init
 const app = express();
-const port = 5005;
+const port = 7080;
 
 //middleware for parsing the req content and URL
 app.use(bodyParser.json());
