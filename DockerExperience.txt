@@ -32,10 +32,11 @@ EXPOSE
 CMD ["npm","start"]
 
 
-Explained:
+Explaining the usage the docker file:
 FROM
 ##the image that will be used for the docker engine to build
 FROM node
+
 WORKDIR
 ## the directory of the project on the docker Container once built
 WORKDIR /app
@@ -63,3 +64,12 @@ EXPOSE 8000
 ENV
 ## used to set the environment variables
 ENV NODE_ENV production
+
+
+
+1- You need to created a root file with name Dockerfile as follow up.
+2- run 
+    >Docker build . -t avatarsoftware/myappimg
+    >Docker run -it --name shoppingapp_container1 -p 7080:8080 avatarsoftware/myappimg
+
+    
